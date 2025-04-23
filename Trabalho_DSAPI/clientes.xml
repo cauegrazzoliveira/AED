@@ -1,0 +1,12 @@
+<clientes>
+    <cliente>
+        <id>1</id>
+        <nome>Cauê Oliveira</nome>
+        <altura>1.73</altura>
+    </cliente>
+    <cliente>
+        <id>2</id>
+        <nome>Cauê Oliveira 2</nome>
+        <altura>1.73</altura>
+    </cliente>
+</clientes>
