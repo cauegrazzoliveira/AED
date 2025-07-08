@@ -55,3 +55,34 @@ class ListaDuplamenteEncadeda:
             while aux :
                 print( aux.dado )
                 aux = aux.ant
+
+    def remover(self, valor):
+        if self.inicio != None:
+            removeu = False
+            if self.inicio.dado == valor:
+                self.inicio = self.inicio.prox
+                if self.inicio == None:
+                    self.fim = None
+                else:
+                    self.inicio.ant = None
+                removeu = True
+            else:
+                antTestado = self.inicio
+                aux = self.inicio.prox
+                while aux != None: 
+                    if valor == aux.dado:
+                        antTestado.prox = aux.prox
+                        if aux.prox is not None:
+                            aux.prox.ant = antTestado
+                        else:
+                            self.fim = antTestado
+                        removeu = True
+                        break
+                    else:
+                        antTestado = aux
+                        aux = aux.prox
+                if removeu:
+                    print( "Elemento ", valor, " removido")
+                else:
+                    print( "Elemento não encontrado")
+        self.imprimir()
