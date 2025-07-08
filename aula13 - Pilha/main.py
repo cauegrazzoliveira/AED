@@ -40,12 +40,12 @@ def main():
             if autor:
                 try:
                     paginas = int(input("Digite o número de páginas: "))
-                    pilha_livros.push(titulo, autor, paginas)
+                    pilha_livros.add(titulo, autor, paginas)
                 except ValueError:
                     print("Número de páginas inválido. Operação cancelada.")
 
         elif escolha == '2': # Remover Livro
-            pilha_livros.pop()
+            pilha_livros.deletar()
 
         elif escolha == '3': # Imprimir Pilha
             pilha_livros.imprimir()
