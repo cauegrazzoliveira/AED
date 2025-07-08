@@ -9,4 +9,9 @@ lista.add("Guilherme")
 lista.add("Sarah")
 lista.add("Pedro")
 
+lista.remover("João")
+lista.remover("Guilherme")
+lista.remover("Adalto")
+lista.remover("Sarah")
+
 lista.imprimirReverso()
