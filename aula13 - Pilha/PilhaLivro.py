@@ -5,14 +5,14 @@ class PilhaLivro:
     def __init__(self):
         self.topo = None
 
-    def push(self, titulo: str, autor: Autor, paginas: int):
+    def add(self, titulo: str, autor: Autor, paginas: int):
         """ Adiciona um livro ao topo da pilha. """
         novo_livro = Livro(titulo, autor, paginas)
         novo_livro.prox = self.topo
         self.topo = novo_livro
         print(f"Livro '{titulo}' empilhado.")
 
-    def pop(self):
+    def deletar(self):
         """ Remove e retorna o livro do topo da pilha. """
         if self.topo is None:
             print("A pilha de livros está vazia!")
