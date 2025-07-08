@@ -1,49 +1,86 @@
 from Autor import Autor
 
-class ListaEncadeadaAutor():
+class ListaEncadeadaAutor:
     def __init__(self):
         self.inicio = None
 
-    def adicionar_autor(self, autor):
-        if self.inicio is None or autor.nome < self.inicio.nome:
-            autor.prox = self.inicio
-            self.inicio = autor
+    def addNoInicio(self, nome, nacionalidade):
+        """ Adiciona um autor no início da lista. """
+        novo_autor = Autor(nome, nacionalidade)
+        novo_autor.prox = self.inicio
+        self.inicio = novo_autor
+        print(f"Autor '{nome}' adicionado no início.")
+
+    def addNoFim(self, nome, nacionalidade):
+        """ Adiciona um autor no fim da lista. """
+        novo_autor = Autor(nome, nacionalidade)
+        if self.inicio is None:
+            self.inicio = novo_autor
         else:
-            atual = self.inicio
-            while atual.prox and atual.prox.nome < autor.nome:
-                atual = atual.prox
-            autor.prox = atual.prox
-            atual.prox = autor
+            aux = self.inicio
+            while aux.prox:
+                aux = aux.prox
+            aux.prox = novo_autor
+        print(f"Autor '{nome}' adicionado no fim.")
 
     def imprimir(self):
-        print("---------------------------------")
+        """ Imprime todos os autores na lista. """
+        print("--- Lista de Autores ---")
         if self.inicio is None:
-            print( "Nenhum autor encontrado!" )
+            print("Lista de autores está vazia!")
         else:
             aux = self.inicio
             while aux:
-                print(aux.nome)
+                print(f"Nome: {aux.nome}, Nacionalidade: {aux.nacionalidade}")
                 aux = aux.prox
+        print("------------------------")
+
+    def removerDoInicio(self):
+        """ Remove o autor do início da lista. """
+        if self.inicio is None:
+            print("Lista de autores está vazia!")
+            return
+        autor_removido = self.inicio.nome
+        self.inicio = self.inicio.prox
+        print(f"Autor '{autor_removido}' removido do início.")
+
+    def removerDoFim(self):
+        """ Remove o autor do fim da lista. """
+        if self.inicio is None:
+            print("Lista de autores está vazia!")
+            return
+        if self.inicio.prox is None:
+            autor_removido = self.inicio.nome
+            self.inicio = None
+            print(f"Autor '{autor_removido}' removido.")
+            return
+
+        ant = self.inicio
+        aux = self.inicio.prox
+        while aux.prox:
+            ant = aux
+            aux = aux.prox
+        autor_removido = aux.nome
+        ant.prox = None
+        print(f"Autor '{autor_removido}' removido do fim.")
 
     def remover(self, nome):
-        if self.inicio != None:
-            removeu = False
-            if self.inicio.nome == nome:
-                self.inicio = self.inicio.prox
-                removeu = True
-            else:
-                ant = self.inicio
-                aux = self.inicio.prox
-                while aux != None:
-                    if nome == aux.nome:
-                        ant.prox = aux.prox
-                        removeu = True
-                        break
-                    else:
-                        ant = aux
-                        aux = aux.prox
-                if removeu:
-                    print("Elemento ", nome, " Removido!")
-                else:
-                    print("Elemento Não Encontrado!")
-        self.imprimir()
+        """ Remove um autor específico pelo nome. """
+        if self.inicio is None:
+            print("Lista de autores está vazia!")
+            return
+
+        if self.inicio.nome.lower() == nome.lower():
+            self.removerDoInicio()
+            return
+
+        ant = self.inicio
+        aux = self.inicio.prox
+        while aux:
+            if aux.nome.lower() == nome.lower():
+                ant.prox = aux.prox
+                print(f"Autor '{aux.nome}' removido!")
+                return
+            ant = aux
+            aux = aux.prox
+        print(f"Autor '{nome}' não encontrado!")
