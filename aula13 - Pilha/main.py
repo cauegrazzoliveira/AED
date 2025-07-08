@@ -1,5 +1,4 @@
 from PilhaLivro import PilhaLivro
-from FilaLivro import FilaLivro
 from ListaEncadeadaAutor import ListaEncadeadaAutor
 
 def menu_livros(pilha, fila):
