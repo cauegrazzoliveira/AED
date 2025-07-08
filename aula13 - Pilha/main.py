@@ -7,10 +7,7 @@ def menu_livros(pilha, fila):
         print("1. Adicionar Livro na Pilha")
         print("2. Remover Livro da Pilha")
         print("3. Imprimir Pilha de Livros")
-        print("4. Adicionar Livro na Fila")
-        print("5. Remover Livro da Fila")
-        print("6. Imprimir Fila de Livros")
-        print("7. Voltar ao Menu Principal")
+        print("4. Voltar ao Menu Principal")
         escolha = input("Escolha uma opção: ")
 
         if escolha == '1':
@@ -23,15 +20,6 @@ def menu_livros(pilha, fila):
         elif escolha == '3':
             pilha.imprimir()
         elif escolha == '4':
-            titulo = input("Título do livro: ")
-            autor = input("Autor do livro: ")
-            paginas = int(input("Número de páginas: "))
-            fila.enqueue(titulo, autor, paginas)
-        elif escolha == '5':
-            fila.dequeue()
-        elif escolha == '6':
-            fila.imprimir()
-        elif escolha == '7':
             break
         else:
             print("Opção inválida!")
